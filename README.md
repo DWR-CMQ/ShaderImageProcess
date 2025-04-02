@@ -1,3 +1,3 @@
 <div style="padding: 5px">
-  ![example](assets/gif/example.gif)
+  <img src="./assets/gif/example.gif" width="300" alt="示例GIF" />
 </div>
