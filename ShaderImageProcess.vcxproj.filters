@@ -54,6 +54,9 @@
     <ClCompile Include="ui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="common_helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -96,6 +99,12 @@
       <Filter>imgui</Filter>
     </ClInclude>
     <ClInclude Include="ui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

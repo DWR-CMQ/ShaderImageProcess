@@ -60,7 +60,7 @@ int main()
 	// 创建输入纹理
 	int width, height;
 	Texture input;
-	unsigned int inputTexture = input.loadTexture("1.jpg", width, height);
+	unsigned int inputTexture = input.loadTexture("assets/image/1.jpg", width, height);
 
 	Shader rgbToYCrCbProgram("assets/shader/display.vs", "assets/shader/smartblurbuffer.fs");
 	Shader smartBlurProgram("assets/shader/display.vs", "assets/shader/smartblur.fs");
@@ -91,6 +91,9 @@ int main()
 	FrameBuffer blurredFBO;
 	GLuint blur = blurredFBO.CreateFramebuffer(blurredTexture, width, height);
 
+	// 功能
+	SmartBlur stSmartBlur;
+
 	ImGuiIO& io = ImGui::GetIO();
 	// 主渲染循环
 	while (!glfwWindowShouldClose(window)) 
@@ -101,7 +104,7 @@ int main()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		UI::RenderUI();
+		UI::RenderUI(stSmartBlur);
 
 		// 第一阶段：RGB转YCrCb（渲染到帧缓冲）
 		glBindFramebuffer(GL_FRAMEBUFFER, ycrcb);
@@ -127,8 +130,8 @@ int main()
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, ycrcbTexture);
 		glUniform1i(glGetUniformLocation(smartBlurProgram.ID, "inputImage"), 0);
-		glUniform1i(glGetUniformLocation(smartBlurProgram.ID, "radius"), 10);
-		glUniform1f(glGetUniformLocation(smartBlurProgram.ID, "threshold"), 24.0f);
+		glUniform1i(glGetUniformLocation(smartBlurProgram.ID, "radius"), stSmartBlur.iRadius);
+		glUniform1f(glGetUniformLocation(smartBlurProgram.ID, "threshold"), stSmartBlur.fThreshold);
 		glUniform2f(glGetUniformLocation(smartBlurProgram.ID, "resolution"), (float)width, (float)height);
 
 		glBindVertexArray(VAO);

@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\VS\CPlusPlus\ShaderImageProcess\3rd\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\VS\CPlusPlus\ShaderImageProcess\3rd\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>3rd\include;$(IncludePath)</IncludePath>
+    <LibraryPath>3rd\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="common_helper.cpp" />
     <ClCompile Include="D:\OpenGLEnvironment\lib\glad.c" />
     <ClCompile Include="framebuffer.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
@@ -156,6 +158,8 @@
     <ClCompile Include="ui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common_helper.h" />
+    <ClInclude Include="defs.h" />
     <ClInclude Include="framebuffer.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
