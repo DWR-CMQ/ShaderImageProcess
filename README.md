@@ -1,3 +1,3 @@
-<div style="padding: 5px">
-  <img src="./assets/gif/example.gif" width="300" alt="示例GIF" />
-</div>
+<p align="center">
+    <img src="./assets/gif/example.gif" width="300" alt="example" />
+</p>
