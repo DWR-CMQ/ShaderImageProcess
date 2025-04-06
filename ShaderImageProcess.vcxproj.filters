@@ -22,6 +22,9 @@
     <Filter Include="core\smartblur">
       <UniqueIdentifier>{f3a5eea3-9323-40af-887e-7c8fd045bd9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\lut">
+      <UniqueIdentifier>{d06080ce-b3f8-47d9-abde-05e281efaf30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +69,9 @@
     <ClCompile Include="core\framebuffer.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="core\lut\ps_lut.cpp">
+      <Filter>core\lut</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -101,9 +107,6 @@
     <ClInclude Include="ui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="defs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="common_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -120,6 +123,12 @@
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="core\framebuffer.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\lut\ps_lut.h">
+      <Filter>core\lut</Filter>
+    </ClInclude>
+    <ClInclude Include="core\defs.h">
       <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>

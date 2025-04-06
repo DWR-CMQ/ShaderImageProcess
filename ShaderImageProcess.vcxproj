@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="common_helper.cpp" />
     <ClCompile Include="core\framebuffer.cpp" />
+    <ClCompile Include="core\lut\ps_lut.cpp" />
     <ClCompile Include="core\smartblur\ps_smartblur.cpp" />
     <ClCompile Include="core\texture.cpp" />
     <ClCompile Include="D:\OpenGLEnvironment\lib\glad.c" />
@@ -160,12 +161,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common_helper.h" />
+    <ClInclude Include="core\defs.h" />
     <ClInclude Include="core\framebuffer.h" />
+    <ClInclude Include="core\lut\ps_lut.h" />
     <ClInclude Include="core\render_base.h" />
     <ClInclude Include="core\shader.h" />
     <ClInclude Include="core\smartblur\ps_smartblur.h" />
     <ClInclude Include="core\texture.h" />
-    <ClInclude Include="defs.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
