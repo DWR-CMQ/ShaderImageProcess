@@ -5,6 +5,5 @@ class FrameBuffer
 {
 public:
 	GLuint CreateFramebuffer(GLuint& texture, int width, int height);
-
 };
 
