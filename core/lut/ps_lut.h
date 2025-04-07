@@ -1,5 +1,12 @@
 #pragma once
-class PSLut
+#include "../render_base.h"
+#include "../shader.h"
+#include "../texture.h"
+#include "../defs.h"
+
+class PSLut : public RenderBase
 {
+public:
+
 };
 
