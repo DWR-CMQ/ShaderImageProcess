@@ -8,16 +8,17 @@ class PSSmartBlur : public RenderBase
 {
 public:
 	PSSmartBlur();
+	virtual ~PSSmartBlur();
+
 	void Init() override;
 	void Update(SmartBlur opt) override;
 	void Render() override;
-	virtual ~PSSmartBlur();
 
 private:
 	unsigned int m_uiVao;
 	unsigned int m_uiVbo;
 
-	unsigned int m_inputTex;
+	unsigned int m_uiInputTex;
 	unsigned int m_uiYCrCbTex;
 	unsigned int m_uiBlurTex;
 

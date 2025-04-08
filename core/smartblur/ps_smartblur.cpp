@@ -13,7 +13,7 @@ PSSmartBlur::~PSSmartBlur()
 {
 	glDeleteVertexArrays(1, &m_uiVao);
 	glDeleteBuffers(1, &m_uiVbo);
-	glDeleteTextures(1, &m_inputTex);
+	glDeleteTextures(1, &m_uiInputTex);
 	glDeleteTextures(1, &m_uiYCrCbTex);
 	glDeleteTextures(1, &m_uiBlurTex);
 	glDeleteFramebuffers(1, &m_ycrcb);
@@ -22,22 +22,9 @@ PSSmartBlur::~PSSmartBlur()
 
 void PSSmartBlur::Init()
 {
-	// 全屏四边形顶点数据
-	float quadVertices[] = 
-	{
-		// 位置 // 纹理坐标
-		-1.0f, 1.0f, 0.0f, 1.0f,
-		-1.0f, -1.0f, 0.0f, 0.0f,
-		1.0f, -1.0f, 1.0f, 0.0f,
-
-		-1.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, -1.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 1.0f, 1.0f
-	};
-
 	// 创建输入纹理
 	Texture input;
-	m_inputTex = input.loadTexture("assets/image/1.jpg", m_iWidth, m_iHeight);
+	m_uiInputTex = input.loadTexture("assets/image/1.jpg", m_iWidth, m_iHeight);
 
 	m_pRgbToYCrCbProgram = new Shader("assets/shader/display.vs", "assets/shader/smartblurbuffer.fs");
 	m_pSmartBlurProgram = new Shader("assets/shader/display.vs", "assets/shader/smartblur.fs");
@@ -72,7 +59,7 @@ void PSSmartBlur::Update(SmartBlur opt)
 
 void PSSmartBlur::Render()
 {
-	// 第一阶段：RGB转YCrCb（渲染到帧缓冲）
+	// 第一阶段：RGB转YCrCb（渲染到m_ycrcb帧缓冲）
 	glBindFramebuffer(GL_FRAMEBUFFER, m_ycrcb);
 	glViewport(0, 0, m_iWidth, m_iHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -80,13 +67,13 @@ void PSSmartBlur::Render()
 
 	glUseProgram(m_pRgbToYCrCbProgram->ID);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_inputTex);
+	glBindTexture(GL_TEXTURE_2D, m_uiInputTex);
 	glUniform1i(glGetUniformLocation(m_pRgbToYCrCbProgram->ID, "inputImage"), 0);
 
 	glBindVertexArray(m_uiVao);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
-	// 第二阶段：智能模糊（渲染到默认帧缓冲）
+	// 第二阶段：智能模糊（渲染到m_blur帧缓冲）
 	glBindFramebuffer(GL_FRAMEBUFFER, m_blur);
 	glViewport(0, 0, m_iWidth, m_iHeight);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -109,16 +96,16 @@ void PSSmartBlur::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// 左侧视口：原始图像
-	glViewport(0, 0, kiWidth / 2, kiHeigth);
+	glViewport(0, 0, kiWidth / 2, kiHeight);
 	glUseProgram(m_pDisplayProgram->ID);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_inputTex);
+	glBindTexture(GL_TEXTURE_2D, m_uiInputTex);
 	glUniform1i(glGetUniformLocation(m_pDisplayProgram->ID, "inputImage"), 0);
 	glBindVertexArray(m_uiVao);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	// 右侧视口：处理后的图像
-	glViewport(kiWidth / 2, 0, kiWidth / 2, kiHeigth);
+	glViewport(kiWidth / 2, 0, kiWidth / 2, kiHeight);
 	glUseProgram(m_pDisplayProgram->ID);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_uiBlurTex);

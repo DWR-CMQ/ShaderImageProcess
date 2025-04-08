@@ -6,6 +6,7 @@
 
 #include "ui.h"
 #include "core/smartblur/ps_smartblur.h"
+#include "core/lut/ps_lut.h"
 
 // 窗口尺寸
 const unsigned int WIDTH = 1200;
@@ -45,6 +46,7 @@ int main()
 	// 功能
 	SmartBlur stSmartBlur;
 	PSSmartBlur psSB;
+	PSLut psLut;
 
 	ImGuiIO& io = ImGui::GetIO();
 	// 主渲染循环
@@ -57,8 +59,10 @@ int main()
 		ImGui::NewFrame();
 
 		UI::RenderUI(stSmartBlur);
-		psSB.Update(stSmartBlur);
-		psSB.Render();
+		//psSB.Update(stSmartBlur);
+		//psSB.Render();
+		psLut.Update(stSmartBlur);
+		psLut.Render();
 
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
