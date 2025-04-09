@@ -11,7 +11,7 @@ enum class Scale
 	LOG
 };
 
-struct SmartBlur 
+struct psOptions
 {
 	int iRadius = 3;
 	float fThreshold = 1.0;

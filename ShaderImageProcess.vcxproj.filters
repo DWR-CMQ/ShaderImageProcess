@@ -72,6 +72,12 @@
     <ClCompile Include="core\lut\ps_lut.cpp">
       <Filter>core\lut</Filter>
     </ClCompile>
+    <ClCompile Include="core\opengl_window.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ps_window.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -129,6 +135,12 @@
       <Filter>core\lut</Filter>
     </ClInclude>
     <ClInclude Include="core\defs.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\opengl_window.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ps_window.h">
       <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>

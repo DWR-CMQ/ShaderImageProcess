@@ -9,6 +9,6 @@ class UI
 {
 public:
 	static void SetupUI(GLFWwindow* window);
-	static void RenderUI(SmartBlur& opts);
+	static void RenderUI(psOptions& opts);
 };
 

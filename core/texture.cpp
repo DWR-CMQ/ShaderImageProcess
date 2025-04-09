@@ -47,7 +47,6 @@ unsigned int Texture::loadTexture(char const* path)
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
 
-	stbi_set_flip_vertically_on_load(true);
 	int nrComponents, width, height;
 	unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
 	if (data)
@@ -67,7 +66,9 @@ unsigned int Texture::loadTexture(char const* path)
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		// 这里的参数如果设定为GL_LINEAR_MIPMAP_LINEAR会导致采样错误 但不清楚为什么会这样
+		// 修改为GL_LINEAR就是正常的
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		stbi_image_free(data);

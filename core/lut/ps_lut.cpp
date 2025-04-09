@@ -47,9 +47,9 @@ void PSLut::Init()
 	m_uiLut = lutFBO.CreateFramebuffer(m_uiLutFBOTex, m_iWidth, m_iHeight);
 }
 
-void PSLut::Update(SmartBlur opt)
+void PSLut::Update(psOptions opt)
 {
-
+	// ¸üÐÂLUT±í
 }
 
 void PSLut::Render()
@@ -83,8 +83,7 @@ void PSLut::Render()
 	m_pDisplayProgram->use();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_uiInputTex);
-	//m_pDisplayProgram->setInt("inputImage", 0);
-	glUniform1i(glGetUniformLocation(m_pDisplayProgram->ID, "inputImage"), 0);
+	m_pDisplayProgram->setInt("inputImage", 0);
 	glBindVertexArray(m_uiVao);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
@@ -93,8 +92,7 @@ void PSLut::Render()
 	m_pDisplayProgram->use();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_uiLutFBOTex);
-	//m_pDisplayProgram->setInt("inputImage", 0);
-	glUniform1i(glGetUniformLocation(m_pDisplayProgram->ID, "inputImage"), 0);
+	m_pDisplayProgram->setInt("inputImage", 0);
 	glBindVertexArray(m_uiVao);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }

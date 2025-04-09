@@ -11,7 +11,7 @@ public:
 	virtual ~PSLut();
 
 	void Init() override;
-	void Update(SmartBlur opt) override;
+	void Update(psOptions opt) override;
 	void Render() override;
 
 private:

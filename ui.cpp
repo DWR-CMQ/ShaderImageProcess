@@ -12,7 +12,7 @@ void UI::SetupUI(GLFWwindow* window)
 	
 }
 
-void UI::RenderUI(SmartBlur& opts)
+void UI::RenderUI(psOptions& opts)
 {
 	ImGui::SetNextWindowSize(ImVec2(400, 100));
 	ImGui::Begin("PS");

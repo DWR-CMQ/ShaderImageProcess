@@ -51,7 +51,7 @@ void PSSmartBlur::Init()
 	m_blur = blurredFBO.CreateFramebuffer(m_uiBlurTex, m_iWidth, m_iHeight);
 }
 
-void PSSmartBlur::Update(SmartBlur opt)
+void PSSmartBlur::Update(psOptions opt)
 {
 	m_stSmartBlur.fThreshold = opt.fThreshold;
 	m_stSmartBlur.iRadius = opt.iRadius;

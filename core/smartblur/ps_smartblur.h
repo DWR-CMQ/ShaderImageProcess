@@ -11,7 +11,7 @@ public:
 	virtual ~PSSmartBlur();
 
 	void Init() override;
-	void Update(SmartBlur opt) override;
+	void Update(psOptions opt) override;
 	void Render() override;
 
 private:
@@ -32,6 +32,6 @@ private:
 	int m_iWidth;
 	int m_iHeight;
 
-	SmartBlur m_stSmartBlur;
+	psOptions m_stSmartBlur;
 };
 

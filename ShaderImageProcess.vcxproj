@@ -146,6 +146,8 @@
     <ClCompile Include="common_helper.cpp" />
     <ClCompile Include="core\framebuffer.cpp" />
     <ClCompile Include="core\lut\ps_lut.cpp" />
+    <ClCompile Include="core\opengl_window.cpp" />
+    <ClCompile Include="core\ps_window.cpp" />
     <ClCompile Include="core\smartblur\ps_smartblur.cpp" />
     <ClCompile Include="core\texture.cpp" />
     <ClCompile Include="D:\OpenGLEnvironment\lib\glad.c" />
@@ -164,6 +166,8 @@
     <ClInclude Include="core\defs.h" />
     <ClInclude Include="core\framebuffer.h" />
     <ClInclude Include="core\lut\ps_lut.h" />
+    <ClInclude Include="core\opengl_window.h" />
+    <ClInclude Include="core\ps_window.h" />
     <ClInclude Include="core\render_base.h" />
     <ClInclude Include="core\shader.h" />
     <ClInclude Include="core\smartblur\ps_smartblur.h" />

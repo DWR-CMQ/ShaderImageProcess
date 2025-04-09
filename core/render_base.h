@@ -8,6 +8,6 @@ class RenderBase
 {
 public:
 	virtual void Init() = 0;
-	virtual void Update(SmartBlur opt) = 0;
+	virtual void Update(psOptions opt) = 0;
 	virtual void Render() = 0;
 };
